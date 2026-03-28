@@ -1,0 +1,268 @@
+:root {
+    --bg-gradient: linear-gradient(135deg, #ce93d8 0%, #64b5f6 100%);
+    --input-bg: #ffffff;
+    --green-edit: #2ecc71;
+    --red-delete: #e74c3c;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--bg-gradient);
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.container {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Header & Logo */
+header {
+    text-align: center;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.logo-icon {
+    background: var(--bg-gradient);
+    padding: 2px 10px;
+    border-radius: 8px;
+    color: white;
+}
+
+.add-tab-btn {
+    background: #6200ea;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Input Section */
+.input-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.input-group label {
+    font-size: 10px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Saved Tabs Panel */
+.saved-tabs {
+    background: linear-gradient(to bottom right, rgb(106, 102, 222), rgb(39, 1, 102));
+    border-radius: 12px;
+    padding: 15px;
+    color: white;
+    min-height: 300px;
+}
+
+.list-header h2 {
+    font-size: 14px;
+    margin: 0 0 10px 0;
+}
+
+.search-bar {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 6px 30px 6px 10px;
+    border-radius: 20px;
+    border: none;
+    box-sizing: border-box;
+}
+
+.search-icon {
+    position: absolute;
+    right: 10px;
+    top: 4px;
+    color: #888;
+}
+
+/* Tab Items */
+.tab-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.tab-item {
+    background: white;
+    color: black;
+    border-radius: 6px;
+    padding: 8px 12px;
+    transition: all 0.2s;
+}
+
+.tab-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tab-title {
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.tab-title:hover{
+    text-decoration: underline;
+    color: #6200ea;
+}
+
+
+/* Actions - Hidden by default, shown on hover */
+.tab-actions {
+    display: flex;
+    gap: 4px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.tab-item:hover .tab-actions {
+    opacity: 1;
+}
+
+.tab-actions button {
+    border: none;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 10px;
+    color: white;
+    cursor: pointer;
+}
+
+.tab-actions button:hover {
+    transform: scale(1.1);
+    opacity: 0.9;
+}
+
+.add-tab-btn {
+    background: #6200ea;
+    transition: all 0.2s ease;
+}
+
+.add-tab-btn:hover {
+    background: #4b00b5;
+    transform: translateY(-1px);
+}
+
+.expand-btn { background: none; color: #555 !important; font-size: 12px !important; }
+.edit-btn { background: var(--green-edit); }
+.delete-btn { background: var(--red-delete); }
+
+/* Description Area */
+.tab-details {
+    font-size: 11px;
+    margin-top: 8px;
+    color: #444;
+    border-top: 1px solid #eee;
+    padding-top: 8px;
+
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.tab-details.active {
+    max-height: 100px;
+}
+
+.tab-item.expanded .tab-details {
+    max-height: 100px;
+}
+
+/* Inline Edit UI */
+.edit-ui {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.edit-title, .edit-desc {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+.save-btn {
+    align-self: flex-end;
+    background: var(--green-edit);
+    color: white;
+    border: none;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.log-img {
+    width: 100px;
+    height: 32px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+/* Hide the editing div by default */
+.tab-item-editing {
+    display: none;
+}
+
+/* Show it only when it has the 'active' class */
+.tab-item-editing.active {
+    display: block;
+    margin-top: 10px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.close-btn {
+    align-self: flex-end;
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    color: #888;
+}
+
+.close-btn:hover {
+    color: #e74c3c;
+}
+
