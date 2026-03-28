@@ -6,11 +6,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.querySelector('.search-bar input');
     const tabList = document.querySelector('.tab-list');
 
-    let tabs = JSON.parse(localStorage.getItem('tabs')) || [];
+    let tabs = JSON.parse(localStorage.getItem('tabs')) || [];  // Take from Local storage
 
     // SAVE
     function save() {
-        localStorage.setItem('tabs', JSON.stringify(tabs));
+        localStorage.setItem('tabs', JSON.stringify(tabs)); // Save to local storage
     }
 
     // GET CURRENT TAB
@@ -25,13 +25,14 @@ document.addEventListener('DOMContentLoaded', () => {
         tabList.innerHTML = '';
 
         tabs
-            .filter(tab => tab.title.toLowerCase().includes(filter.toLowerCase()))
+            .filter(tab => tab.title.toLowerCase().includes(filter.toLowerCase())) 
             .forEach((tab, index) => {
 
                 const tabItem = document.createElement('div');
                 tabItem.className = 'tab-item';
 
-                tabItem.innerHTML = `
+                //Generate "tab-main" class section.
+                tabItem.innerHTML = ` 
                     <div class="tab-main">
                         <span class="tab-title">${tab.title}</span>
                         <div class="tab-actions">
@@ -60,13 +61,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 // EXPAND
                 tabItem.querySelector('.expand-btn').addEventListener('click', function () {
                     const details = tabItem.querySelector('.tab-details');
-                    details.classList.toggle('active');
+                    details.classList.toggle('active'); 
                     this.textContent = details.classList.contains('active') ? '▼' : '▶';
                 });
 
                 // EDIT
                 tabItem.querySelector('.edit-btn').addEventListener('click', () => {
 
+                    // Genarate "edit-ui" class section
                     tabItem.innerHTML = `
                         <div class="edit-ui">
                             <input type="text" class="edit-title" value="${tab.title}">
@@ -112,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const title = titleInput.value.trim() || currentTab.title;
             const description = descInput.value.trim() || "";
 
-            tabs.push({
+            tabs.unshift({
                 title: title,
                 description: description,
                 url: currentTab.url
