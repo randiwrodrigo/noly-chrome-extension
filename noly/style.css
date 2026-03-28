@@ -1,5 +1,6 @@
 :root {
-    --bg-gradient: linear-gradient(135deg, #ce93d8 0%, #64b5f6 100%);
+    --bg-gradient: white;
+    --btn-background:rgb(147, 147, 210);
     --input-bg: #ffffff;
     --green-edit: #2ecc71;
     --red-delete: #e74c3c;
@@ -8,11 +9,11 @@
 body {
     font-family: 'Segoe UI', sans-serif;
     background: var(--bg-gradient);
-    height: 100vh;
     margin: 0;
     display: flex;
     justify-content: center;
-    padding-top: 20px;
+    padding: 20px;
+    overflow: hidden;
 }
 
 .container {
@@ -38,21 +39,20 @@ header {
     margin-bottom: 10px;
 }
 
-.logo-icon {
-    background: var(--bg-gradient);
-    padding: 2px 10px;
-    border-radius: 8px;
-    color: white;
-}
-
 .add-tab-btn {
-    background: #6200ea;
+    background: var(--btn-background);
     color: white;
     border: none;
     padding: 8px 20px;
     border-radius: 5px;
     font-weight: bold;
     cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.add-tab-btn:hover {
+    background: #4b00b5;
+    transform: translateY(-1px);
 }
 
 /* Input Section */
@@ -72,18 +72,29 @@ header {
 .input-group input {
     width: 100%;
     padding: 8px;
-    border: none;
+    border: 1px solid grey;
     border-radius: 4px;
     box-sizing: border-box;
 }
 
+.input-group input:focus {
+    outline: none;
+}
+
 /* Saved Tabs Panel */
 .saved-tabs {
-    background: linear-gradient(to bottom right, rgb(106, 102, 222), rgb(39, 1, 102));
+    overflow-y: auto;
+    flex: 1;
+    padding-right: 5px;
+}
+.saved-tabs-section{
+    background: rgb(186, 186, 239);
     border-radius: 12px;
     padding: 15px;
-    color: white;
-    min-height: 300px;
+    color: rgb(0, 0, 0);
+    height: 275px;
+    display: flex;
+    flex-direction: column;
 }
 
 .list-header h2 {
@@ -95,6 +106,10 @@ header {
     position: relative;
     margin-bottom: 15px;
 }
+
+.search-bar input:focus{
+    outline: none;
+} 
 
 .search-bar input {
     width: 100%;
@@ -124,6 +139,7 @@ header {
     border-radius: 6px;
     padding: 8px 12px;
     transition: all 0.2s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .tab-main {
@@ -170,16 +186,6 @@ header {
     opacity: 0.9;
 }
 
-.add-tab-btn {
-    background: #6200ea;
-    transition: all 0.2s ease;
-}
-
-.add-tab-btn:hover {
-    background: #4b00b5;
-    transform: translateY(-1px);
-}
-
 .expand-btn { background: none; color: #555 !important; font-size: 12px !important; }
 .edit-btn { background: var(--green-edit); }
 .delete-btn { background: var(--red-delete); }
@@ -212,6 +218,14 @@ header {
     gap: 5px;
 }
 
+.edit-ui input:focus{
+    outline: none;
+}
+
+.edit-ui textarea:focus{
+    outline: none;
+}
+
 .edit-title, .edit-desc {
     width: 100%;
     box-sizing: border-box;
@@ -220,7 +234,7 @@ header {
     font-family: inherit;
 }
 
-.save-btn {
+.save-btn, .cancel-btn{
     align-self: flex-end;
     background: var(--green-edit);
     color: white;
@@ -229,6 +243,10 @@ header {
     border-radius: 4px;
     font-weight: bold;
     cursor: pointer;
+}
+
+.cancel-btn{
+    background: var(--red-delete);
 }
 
 .log-img {
