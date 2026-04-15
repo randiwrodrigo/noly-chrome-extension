@@ -1,0 +1,340 @@
+:root {
+    --btn-bg: rgb(147, 147, 210);
+    --btn-bg-hover: #4b00b5;
+    --panel-bg: rgb(186, 186, 239);
+    --green-edit: #2ecc71;
+    --red-delete: #e74c3c;
+}
+
+/* ─── Reset & Base ─── */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #ffffff;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    overflow: auto;
+}
+
+/* ─── Layout ─── */
+
+.container {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* ─── Header ─── */
+
+header {
+    text-align: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.log-img {
+    width: 100px;
+    height: 32px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.add-tab-btn {
+    background: var(--btn-bg);
+    color: #ffffff;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.add-tab-btn:hover {
+    background: var(--btn-bg-hover);
+    transform: translateY(-1px);
+}
+
+.add-tab-btn:focus-visible {
+    outline: 2px solid var(--btn-bg-hover);
+    outline-offset: 2px;
+}
+
+/* ─── Input Section ─── */
+
+.input-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.input-group label {
+    font-size: 10px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 13px;
+    transition: border-color 0.15s;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--btn-bg-hover);
+}
+
+/* ─── Saved Tabs Panel ─── */
+
+.saved-tabs-section {
+    background: var(--panel-bg);
+    border-radius: 12px;
+    padding: 15px;
+    height: 275px;
+    display: flex;
+    flex-direction: column;
+}
+
+.list-header h2 {
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0 0 10px;
+}
+
+.saved-tabs {
+    overflow-y: auto;
+    flex: 1;
+    padding-right: 4px;
+}
+
+/* ─── Search Bar ─── */
+
+.search-bar {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 6px 30px 6px 10px;
+    border-radius: 20px;
+    border: none;
+    font-family: inherit;
+    font-size: 13px;
+    transition: box-shadow 0.15s;
+}
+
+.search-bar input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--btn-bg);
+}
+
+.search-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+}
+
+/* ─── Tab List ─── */
+
+.tab-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* ─── Tab Item ─── */
+
+.tab-item {
+    background: #ffffff;
+    color: #000000;
+    border-radius: 6px;
+    padding: 8px 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    transition: box-shadow 0.2s;
+}
+
+.tab-item:hover {
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+}
+
+.tab-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tab-title {
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    transition: color 0.15s;
+}
+
+.tab-title:hover {
+    text-decoration: underline;
+    color: #6200ea;
+}
+
+/* ─── Tab Actions ─── */
+
+.tab-actions {
+    display: flex;
+    gap: 4px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.tab-item:hover .tab-actions {
+    opacity: 1;
+}
+
+.tab-actions button {
+    border: none;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 10px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: transform 0.15s, opacity 0.15s;
+}
+
+.tab-actions button:hover {
+    transform: scale(1.1);
+    opacity: 0.9;
+}
+
+.tab-actions button:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 1px;
+}
+
+.expand-btn {
+    background: none !important;
+    color: #555555 !important;
+    font-size: 14px !important;
+    padding: 2px 6px !important;
+    line-height: 1;
+}
+
+.edit-btn {
+    background: var(--green-edit);
+}
+
+.delete-btn {
+    background: var(--red-delete);
+}
+
+/* ─── Tab Details (expand/collapse) ─── */
+
+.tab-details {
+    font-size: 11px;
+    margin-top: 8px;
+    color: #444444;
+    border-top: 1px solid #eeeeee;
+    padding-top: 8px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.tab-details.active {
+    max-height: 100px;
+}
+
+/* ─── Inline Edit UI ─── */
+
+.edit-ui {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.edit-title,
+.edit-desc {
+    width: 100%;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 13px;
+    padding: 4px 6px;
+    transition: border-color 0.15s;
+}
+
+.edit-title:focus,
+.edit-desc:focus {
+    outline: none;
+    border-color: var(--btn-bg-hover);
+}
+
+.edit-ui > div {
+    display: flex;
+    gap: 6px;
+    justify-content: flex-end;
+}
+
+.save-btn,
+.cancel-btn {
+    background: var(--green-edit);
+    color: #ffffff;
+    border: none;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.15s;
+}
+
+.save-btn:hover,
+.cancel-btn:hover {
+    opacity: 0.85;
+}
+
+.cancel-btn {
+    background: var(--red-delete);
+}
+
+/* ─── Empty State ─── */
+
+.no-tabs-msg {
+    text-align: center;
+    color: #555555;
+    margin-top: 40px;
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+/* ─── Utility ─── */
+
+.hidden {
+    display: none !important;
+}

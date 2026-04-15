@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noly - Tab Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img class="log-img" src="icons/app-icon.png" alt="Noly Logo">
+            </div>
+            <button class="add-tab-btn">Add tab</button>
+        </header>
+
+        <section class="input-section">
+            <div class="input-group">
+                <label for="titleInput">Title</label>
+                <input type="text" id="titleInput" placeholder="Enter title...">
+            </div>
+            <div class="input-group">
+                <label for="descInput">Description</label>
+                <input type="text" id="descInput" placeholder="Enter description...">
+            </div>
+        </section>
+
+        <main class="saved-tabs-section">
+            <div class="list-header">
+                <h2>Saved tabs</h2>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search" aria-label="Search saved tabs">
+                    <span class="search-icon" aria-hidden="true">
+                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.5"/>
+                            <line x1="10.5" y1="10.5" x2="14.5" y2="14.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </span>
+                </div>
+            </div>
+
+            <div class="saved-tabs">
+                <div class="tab-list">
+                    <!-- Tab items injected by index.js -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Noly Tab Manager",
+  "version": "1.0",
+  "description": "Save and manage tabs",
+
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "storage"
+]
+,
+
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": "icons/web-icon-3.png"
+  }
+}
